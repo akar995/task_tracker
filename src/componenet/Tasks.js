@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import Task from './Task';
-const  Tasks=({tasks,removeTask,changeReminder})=>{
+import {useSelector} from "react-redux";
 
-    return ( <>
-
-            {tasks.map((task)=>(<Task key={task.id} task={task} removeTask={removeTask} changeReminder={changeReminder}/>))}
-
-
-        </>
+const Tasks = () => {
+    const {tasks,} = useSelector((state) => state.taskReducer) ?? []
+    return (<React.Fragment>
+            {tasks.map((task) => (<Task key={task.id} task={task}/>))}
+        </React.Fragment>
     )
 }
-export  default Tasks
+export default Tasks
